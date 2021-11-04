@@ -1,0 +1,95 @@
+﻿@using shelterbooking.Shared
+
+<EditForm Model="@shel" OnValidSubmit="@OnValidSubmit">
+    <DataAnnotationsValidator />
+    <div class="form-group ">
+        <div>
+            <label>Kommunens CVR nr. :</label>
+            <div>
+                <InputNumber @bind-Value="@shel.properties.cvr_kode" />
+                <ValidationMessage For="@(() => shel.properties.cvr_kode)" />
+            </div>
+        </div>
+    </div>
+    <div class="form-group ">
+        <div>
+            <label>Kommune:</label>
+            <div>
+                <InputText @bind-Value="@shel.properties.cvr_navn" />
+                <ValidationMessage For="@(() => shel.properties.cvr_navn)" />
+            </div>
+        </div>
+    </div>
+    <div class="form-group ">
+        <div>
+            <label>Kommune kode :</label>
+            <div>
+                <InputNumber @bind-Value="@shel.properties.kommunekode" />
+                <ValidationMessage For="@(() => shel.properties.kommunekode)" />
+            </div>
+        </div>
+    </div>
+    <div class="form-group ">
+        <div>
+            <label>Shelter navn:</label>
+            <div>
+                <InputText @bind-Value="@shel.properties.navn" />
+                <ValidationMessage For="@(() => shel.properties.navn)" />
+            </div>
+        </div>
+    </div>
+    <div class="form-group ">
+        <div>
+            <label>Beskrivelse:</label>
+            <div>
+                <InputText @bind-Value="@shel.properties.beskrivels" />
+                <ValidationMessage For="@(() => shel.properties.beskrivels)" />
+            </div>
+        </div>
+    </div>
+    <div class="form-group ">
+        <div>
+            <label>Lang beskrivelse:</label>
+            <div>
+                <InputText @bind-Value="@shel.properties.lang_beskr" />
+                <ValidationMessage For="@(() => shel.properties.lang_beskr)" />
+            </div>
+        </div>
+    </div>
+    <div class="form-group ">
+        <div>
+            <label>Antal pladser:</label>
+            <div>
+                <InputNumber @bind-Value="@shel.properties.antal_pl" />
+                <ValidationMessage For="@(() => shel.properties.antal_pl)" />
+            </div>
+        </div>
+    </div>
+    <div class="form-group ">
+        <div>
+            <label>Ansvarlig organisation:</label>
+            <div>
+                <InputText @bind-Value="@shel.properties.ansvar_org" />
+                <ValidationMessage For="@(() => shel.properties.ansvar_org)" />
+            </div>
+        </div>
+    </div>
+    <div class="form-group ">
+        <div>
+            <label>Shelter ansvarlig:</label>
+            <div>
+                <InputText @bind-Value="@shel.properties.ansva_v" />
+                <ValidationMessage For="@(() => shel.properties.ansva_v)" />
+            </div>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-success">
+        @ButtonText
+    </button>
+</EditForm>
+@code {
+    [Parameter] public Properties prop { get; set; }
+    [Parameter] public Shelter shel { get; set; }
+    [Parameter] public string ButtonText { get; set; } = "Save";
+    [Parameter] public EventCallback OnValidSubmit { get; set; }
+}
